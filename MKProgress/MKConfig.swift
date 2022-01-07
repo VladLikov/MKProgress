@@ -40,7 +40,13 @@ public struct MKConfig {
      - Progress HUD background's Color
      - Default: .white
      */
-    public var hudColor: UIColor = .white
+    public var hudColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return .systemBackground
+        } else {
+            return .white
+        }
+    }
     
     /**
      - Progress HUD corner radius
@@ -94,13 +100,13 @@ public struct MKConfig {
      - Rotating circle radius(minimum should be HUD width/2)
      - Default: 40.0
      */
-    public var circleRadius: CGFloat = 40.0
+    public var circleRadius: CGFloat = 30
     
     /**
      - Rotating circle border width
      - Default: 1.0
      */
-    public var circleBorderWidth: CGFloat = 1.0
+    public var circleBorderWidth: CGFloat = 3
     
     /**
      - Rotating circle border color
